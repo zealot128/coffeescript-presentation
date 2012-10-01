@@ -1,0 +1,72 @@
+%section
+  = image_tag "logo.png"
+  
+  %h3 Javascript Transpiler
+
+  WDCM Dresden, 9th Nov
+
+%section
+  .fragment= image_tag "http://www.rubyinside.com/wp-content/uploads/2011/04/to2.png"
+  <script type="text/javascript" src="http://www.google.com/trends/embed.js?hl=de&q=coffeescript,+rails+3.1&cmpt=q&content=1&cid=TIMESERIES_GRAPH_0&export=5&w=500&h=330"></script></script>
+
+%section
+  %section
+    %h2 Syntax
+
+%section
+  %section
+    %h2 Tool-Support
+
+%section
+  %section
+    %h2 Warum?
+
+    %blockquote 
+      The compiled output is <strong>readable</strong> and pretty-printed, passes through <strong>JavaScript Lint without warnings</strong>, will work in every JavaScript runtime, and tends to <strong>run as fast or faster</strong> than the equivalent handwritten JavaScript. 
+    Coffeescript-Dokumentation
+  %section
+    %blockquote
+      Write new JS in CoffeeScript.
+    Github <strong>Javascript</strong>-Styleguide
+  %section
+    Dropbox
+    %blockquote
+      Dropbox now writes all new browser-side code in CoffeeScript, and we’ve been loving it. [...]
+      %br
+      In the process of converting, we shaved off more than 5000 lines of code, a 21% reduction. 
+
+
+    https://tech.dropbox.com/?p=361
+%section
+  %section
+    %h2 Warum nicht?
+
+    %h3 Geschmackssache: Einrückung als Syntax
+  %section
+    %h3 Komplexerer Build-Prozess
+    .fragment 
+      Abhilfe schafft 
+      %code coffee watch
+  %section
+    %h3 Debugging: Zeilennummern matchen nicht mit Fehlermeldung
+    .fragment 
+      &rarr; Source Maps in Chrome
+      %br
+      %small Auch zum Debugging von minified JS
+
+%section
+  %h2 Ressourcen
+  %ul
+    %li=link_to "http://coffeescript.org/"
+    %li=link_to "http://coffeescriptcookbook.com"
+
+%section
+  %h2 me
+  %p 
+    Stefan Wienert
+    %br
+    = link_to "@stefanwienert", "https://twitter.com/stefanwienert"
+    %br
+    = link_to "stefanwienert.net", "http://www.stefanwienert.net"
+  %h2 Credits
+  = link_to "reveal.js", "http://lab.hakim.se/reveal-js"

@@ -1,4 +1,5 @@
-// sss require_tree .
+//= require editor
+//
 Reveal.initialize({
   controls: true,
   progress: true,

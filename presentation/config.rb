@@ -10,6 +10,7 @@
 # compass_config do |config|
 #   config.output_style = :compact
 # end
+Haml::Template.options[:ugly] = true
 
 ###
 # Page options, layouts, aliases and proxies

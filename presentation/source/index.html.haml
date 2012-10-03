@@ -6,12 +6,22 @@
   WDCM Dresden, 9th Nov
 
 %section
+  <iframe width="800" height="600" src="http://www.youtube.com/embed/_yZHbh396rc?feature=player_detailpage#t=82s" frameborder="0" allowfullscreen></iframe></iframe>
+
+%section
   .fragment= image_tag "http://www.rubyinside.com/wp-content/uploads/2011/04/to2.png"
   <script type="text/javascript" src="http://www.google.com/trends/embed.js?hl=de&q=coffeescript,+rails+3.1&cmpt=q&content=1&cid=TIMESERIES_GRAPH_0&export=5&w=500&h=330"></script></script>
 
 %section
   %section
     %h2 Syntax
+    .editor-content
+      :preserve
+        jQuery ->
+          $('a.remote').click ->
+            $.ajax()
+          
+  %section
 
 %section
   %section
@@ -70,3 +80,4 @@
     = link_to "stefanwienert.net", "http://www.stefanwienert.net"
   %h2 Credits
   = link_to "reveal.js", "http://lab.hakim.se/reveal-js"
+  = link_to "Bodil.org - Coffeescript", "http://bodil.org/coffeescript"

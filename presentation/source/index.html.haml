@@ -15,13 +15,48 @@
 %section
   %section
     %h2 Syntax
+  %section
+    %h2 Literale / Strukturen
+    .editor-content
+      :preserve
+        a = 2
+
+        # if a? and a == 2
+        #   console.log "a is 2"
+        # else
+        #   console.log "it's not"
+  %section
+    %h2 Objekte / Funktionen
+    .editor-content
+      :preserve
+        math = 
+          PI: 3.1415926
+          square: (x) ->
+            return x * x
+          # circleUmfang: (radius) ->
+
+        math.square 4
+          
+  %section
+    %h2 Klassen
+    .editor-content
+      :preserve
+        class User
+          constructor: (name) ->
+            this.name = name
+            
+          greet: -> 
+            return "Hello " + this.name
+            
+        # user = new User("stefan")
+        # user.greet()
+
+  %section
+    %h2 jQuery &amp; co
     .editor-content
       :preserve
         jQuery ->
-          $('a.remote').click ->
-            $.ajax()
-          
-  %section
+          #
 
 %section
   %section
@@ -65,10 +100,15 @@
       %small Auch zum Debugging von minified JS
 
 %section
-  %h2 Ressourcen
-  %ul
-    %li=link_to "http://coffeescript.org/"
-    %li=link_to "http://coffeescriptcookbook.com"
+  %section
+    %h2 Ressourcen
+  %section
+    =link_to "http://coffeescript.org/"
+    %iframe(src="http://coffeescript.org/" width=990 height=600)
+
+  %section
+    =link_to "http://coffeescriptcookbook.com"
+    %iframe(src="http://coffeescriptcookbook.com/" width=990 height=600)
 
 %section
   %h2 me
@@ -79,5 +119,10 @@
     %br
     = link_to "stefanwienert.net", "http://www.stefanwienert.net"
   %h2 Credits
-  = link_to "reveal.js", "http://lab.hakim.se/reveal-js"
-  = link_to "Bodil.org - Coffeescript", "http://bodil.org/coffeescript"
+  %ul
+    %li
+      = link_to "reveal.js", "http://lab.hakim.se/reveal-js"
+      Presi-Framework
+    %li
+      = link_to "Bodil.org - Coffeescript", "http://bodil.org/coffeescript"
+      Inspiration des Live-Editor

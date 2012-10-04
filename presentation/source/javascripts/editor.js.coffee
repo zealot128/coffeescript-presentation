@@ -65,7 +65,10 @@ class CoffeeCompileEditor
         null
       result = eval(compiled)
       console.log = old_console
-      resultText = JSON.stringify(result, null, 1)
+      try
+        resultText = JSON.stringify(result, null, 1)
+      catch error
+        resultText = result.toString()
       if (resultText)
         @console.append "<span class='return'>#{@escapeHTML(resultText)}</span>"
     catch error

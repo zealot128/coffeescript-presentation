@@ -1,12 +1,14 @@
 
-jQuery ->
-  $('.editor-content').each ->
-    new CoffeeCompileEditor this
     
+Reveal.addEventListener 'slidechanged', ( event )->
+  el = $(event.currentSlide)
+  unless el.find(".ace_editor").length > 0
+    new CoffeeCompileEditor el.find(".editor-content")[0]
 
 class CoffeeCompileEditor
   CoffeeMode = require("ace/mode/coffee").Mode
   constructor: (@editor) ->
+    @editor.ace = this
     p = $(@editor).parent()
     p.append $("<div class='editor'/>")
     p.append $("<pre class='editor-jsbuffer'/>")
@@ -24,6 +26,7 @@ class CoffeeCompileEditor
     @editor.innerHTML = ""
     content = content.replace /(^\s+|\s+$)/g, ""
     content = content.replace /&gt;/g, ">"
+    content = content.replace /&lt;/g, "<"
     editor = ace.edit @editor
     @ace = editor
     session = editor.getSession()
@@ -31,6 +34,7 @@ class CoffeeCompileEditor
     editor.setTheme("ace/theme/textmate");
     session.setUseSoftTabs(true)
     session.setTabSize(2)
+    ref.updateEditor()
     setTimeout ->
       editor.getSession().setValue(content)
       editor.focus()
@@ -52,6 +56,7 @@ class CoffeeCompileEditor
       @js.html compiled
       hljs.highlightBlock @js[0], null, false
     catch error
+      console.log error
       error
     
   runCode: ->

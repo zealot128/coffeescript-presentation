@@ -46,6 +46,16 @@
         #  console.log "it's not"
     %aside.notes
       einfuehrung in Editor. Literale, Rueckgabewerte, Scoping
+  %section 
+
+    %h2 Rückgabewerte
+    .editor-content
+      :preserve
+        calculate = ->
+          # do something
+          12 + 14
+
+        calculate()
   %section
     %h2 Objekte / Funktionen
     .editor-content
@@ -95,14 +105,15 @@
         #links  
 
         #$.ajax
-        #   url: 'http://api.twitter.com/1/statuses/user_timeline.json',
-        #   type: 'GET',
-        #   dataType: 'jsonp',
+        #   url: 'http://api.twitter.com/1/statuses/user_timeline.json'
+        #   type: 'GET'
+        #   dataType: 'jsonp'
         #   data:
-        #     screen_name: "wdcmdresden",
+        #     screen_name: "wdcmdresden"
         #     count: 2
         #   success: (data, textStatus, xhr)->
-        #     alert(tweet.text) for tweet in data
+        #     for tweet in data
+        #       alert(tweet.text)
                 
   %section 
 
@@ -111,19 +122,8 @@
       :preserve
         if a?.has(":something")?
           console.log "..."
-  %section 
-
-    %h2 Rückgabewerte
-    .editor-content
-      :preserve
-        calculate = ->
-          # do something
-          12 + 14
-
-        calculate()
   %section
-    .fragment
-      %h3 Chainable Comparison
+    %h3 Ranges/Comparisons
     .editor-content
       :preserve
         if 2 < a < 5
@@ -131,8 +131,7 @@
         #if a in [2..5]
         #  console.log "\#{a} is in range"
   %section
-    .fragment
-      %h3 Expressions everywhere
+    %h3 Expressions everywhere
     .editor-content
       :preserve
         value = if a?
@@ -140,7 +139,11 @@
         else
           23
 
-        # sum=0; result = sum+=x for x in [0..5]
+        # sum=0
+        # result = sum+=x for x in [0..100]
+
+        # arr = for x in [1..25]
+        #   x * x
 
           
           

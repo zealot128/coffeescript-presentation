@@ -1,12 +1,12 @@
 %section#intro
   = image_tag "logo.png"
-  
+
   %h3 Javascript "Transpiler"
 
-  %p 
-    = image_tag "http://wdcmdresden.com/wp-content/themes/twentytwelve-child/img/wdcm.png"
+  %p
+    = image_tag "http://dresden.onruby.de/assets/labels/dresden-349714ad491282910d375650db6d018f.png"
     %br
-    09.11.2012
+    = Date.today.strftime "%d.%m.%Y"
 %section
   %section
     %blockquote
@@ -30,8 +30,8 @@
     Hybrid aus Ruby und Python
   %section
     %ul
-      %li keine ;
-      %li keine {...}
+      %li keine <code>;</code>
+      %li keine <code>{...}</code>
       %li wenig Klammern
       %li Whitespace signifikant
   %section
@@ -46,7 +46,7 @@
         #  console.log "it's not"
     %aside.notes
       einfuehrung in Editor. Literale, Rueckgabewerte, Scoping
-  %section 
+  %section
 
     %h2 Rückgabewerte
     .editor-content
@@ -60,7 +60,7 @@
     %h2 Objekte / Funktionen
     .editor-content
       :preserve
-        math = 
+        math =
           PI: 3.1415926
           #square: (x) ->
           #  return x * x
@@ -69,7 +69,7 @@
 
         #math.square 4
         #math.circleUmfang(2)
-          
+
   %section
     %h2 Klassen
     .editor-content
@@ -77,10 +77,10 @@
         class User
           constructor: (name) ->
             this.name = name
-            
-          #greet: -> 
+
+          #greet: ->
           #  return "Hello " + this.name
-            
+
         #user = new User("stefan")
         #user.greet()
 
@@ -90,38 +90,47 @@
         #admin = new Admin("stefan")
         #admin.greet()
 
-        
+
 
   %section
     %h2 jQuery &amp; co
     .editor-content
       :preserve
         #links = []
-        jQuery -> 
+        jQuery ->
         #  $('a').each ->
         #    if a = $(@).attr("href")
         #      links.push a
         #  links
-        #links  
+        #links
 
         #$.ajax
         #   url: 'http://api.twitter.com/1/statuses/user_timeline.json'
         #   type: 'GET'
         #   dataType: 'jsonp'
         #   data:
-        #     screen_name: "wdcmdresden"
+        #     screen_name: "ruby_dresden",
         #     count: 2
         #   success: (data, textStatus, xhr)->
-        #     for tweet in data
-        #       alert(tweet.text)
-                
-  %section 
+        #     alert(tweet.text) for tweet in data
+
+  %section
 
     %h2 More...
     .editor-content
       :preserve
         if a?.has(":something")?
           console.log "..."
+  %section
+
+    %h2 Rückgabewerte
+    .editor-content
+      :preserve
+        calculate = ->
+          # do something
+          12 + 14
+
+        calculate()
   %section
     %h3 Ranges/Comparisons
     .editor-content
@@ -145,8 +154,8 @@
         # arr = for x in [1..25]
         #   x * x
 
-          
-          
+
+
 %section
   %section
     %h2 Tool-Support
@@ -185,6 +194,46 @@
     %ul
       %li Rails 3.1+ Asset pipeline
       %li Sinatra, Django, Drupal, Symfony2,...
+  %section
+    %h3 Rails
+    %p Braucht JavaScript-Engine:
+    %ul
+      %li
+        %pre.code
+          apt-get install nodejs
+      %li
+        %pre.code
+          :preserve
+            gem "therubyracer"
+  %section
+    %h3 Rails - Als js.erb Ersatz
+
+    %ul
+      %li
+        = link_to "markbates/coffeebeans", "https://github.com/markbates/coffeebeans"
+        &rarr;
+        %pre.code
+          :preserve
+            gem "coffeebeans"
+            ...
+            app/views/users/index.js.coffee
+      %li.fragment
+        HAML <code>coffee-filter</code>
+        %pre.code
+          :preserve
+            :coffeescript
+              $ ->
+                console.log "Hello"
+
+
+  %section
+    %h3 Iced Coffeescript
+    %blockquote
+      [...] is a superset of CoffeeScript. [...]
+      %br
+      = link_to "IcedCoffeeScript (ICS)", "http://maxtaco.github.io/coffee-script/"
+      adds two new keywords: <strong>await</strong> and <strong>defer</strong>
+    Asynchrone Callbacks &rarr; (scheinbar) synchroner prozeduraler Code
 
   %section
     %h3 Editor
@@ -198,8 +247,8 @@
   %section
     %h2 Warum?
 
-    %blockquote 
-      The compiled output is <strong>readable</strong> and pretty-printed, passes through <strong>JavaScript Lint without warnings</strong>, will work in every JavaScript runtime, and tends to <strong>run as fast or faster</strong> than the equivalent handwritten JavaScript. 
+    %blockquote
+      The compiled output is <strong>readable</strong> and pretty-printed, passes through <strong>JavaScript Lint without warnings</strong>, will work in every JavaScript runtime, and tends to <strong>run as fast or faster</strong> than the equivalent handwritten JavaScript.
     Coffeescript-Dokumentation
   %section
     %blockquote
@@ -210,10 +259,31 @@
     %blockquote
       Dropbox now writes all new browser-side code in CoffeeScript, and we’ve been loving it. [...]
       %br
-      In the process of converting, we shaved off more than 5000 lines of code, a 21% reduction. 
+      In the process of converting, we shaved off more than 5000 lines of code, a 21% reduction.
 
 
     https://tech.dropbox.com/?p=361
+  %section
+    %h3
+      = link_to "Wer nutzt es sonst noch?", "https://github.com/jashkenas/coffee-script/wiki/In-The-Wild"
+    %ul
+      %li Hubot
+      %li Posterous
+      %li Trello
+      %li Airbnb Mobile
+      %li Basecamp
+      %li Various Node.js libs/frameworks
+      %li m.nytimes, The Economist
+  %section
+    %blockquote
+      As a result he was very happy with the quality of the JavaScript codebase.
+      %br
+      However he still concluded that they would have been better off working in CoffeeScript, because it's easier to understand what is going [...]
+
+      %br
+      %strong
+        but I agree with him and will continue to use coffeescript for any non-trivial amounts of javascript.
+    = link_to "Martin Fowler", "http://martinfowler.com/bliki/TransparentCompilation.html"
   %section
     %ul
       %li Lesbarer
@@ -226,25 +296,25 @@
     %h3 Geschmackssache: Einrückung als Syntax
   %section
     %h3 Komplexerer Build-Prozess
-    .fragment 
-      Abhilfe schafft 
+    .fragment
+      Abhilfe schafft
       %pre.code coffee watch
       oder guard-coffeescript
   %section
     %h3 Debugging: Zeilennummern matchen nicht mit Fehlermeldung
-    .fragment 
+    .fragment
       &rarr; Source Maps in Chrome
       %br
       %small Auch zum Debugging von minified JS
   %section
     %h3 Alternativen
 
-    %h4 
-      Typescript 
+    %h4
+      Typescript
       %i Microsoft
     %pre.code
 
-      :preserve 
+      :preserve
         class Admin {
          ...
         }
@@ -254,7 +324,7 @@
         }
         function greet(variable: Person) {...}
   %section
-    %h4 
+    %h4
       Dart2Js
       %i Google
     %pre.code
@@ -271,7 +341,7 @@
     %h4 LispyScript
     %pre.code
       :preserve
-        (var square (function (x) (* x x))) 
+        (var square (function (x) (* x x)))
         (console.log (square 10))
 
 %section
@@ -281,20 +351,29 @@
     %ul
       %li= link_to "CoffeeScript Doku", "http://coffeescript.org/"
       %li= link_to "CoffeeScript Cookbook", "http://coffeescriptcookbook.com"
+      %li= link_to "JS2Coffee", "http://js2coffee.org"
       %li= link_to "[Youtube] CoffeeScript for the Rubyist by Mark Bates", "http://www.youtube.com/watch?v=aER4_AP3S4E"
 %section
-  %h2 me
-  %p 
+
+  = image_tag "http://www.gravatar.com/avatar/6edcb304a03a87ddf5c68239f7d001e4?s=200&d=identicon&r=PG", style: "float: left; margin-right: 10px"
+  %p
     Stefan Wienert
     %br
     = link_to "@stefanwienert", "https://twitter.com/stefanwienert"
     %br
     = link_to "stefanwienert.net", "http://www.stefanwienert.net"
-  %h2 Credits
-  %ul
-    %li
-      = link_to "reveal.js", "http://lab.hakim.se/reveal-js"
-      Presi-Framework
-    %li
-      = link_to "Bodil.org - Coffeescript", "http://bodil.org/coffeescript"
-      Inspiration des Live-Editor
+    %br
+    %small Webentwickler bei pludoni GmbH
+
+  %p.plain(style="clear: both")
+    = image_tag "https://www.empfehlungsbund.de/empfehlungsbund-logo.png"
+    %br
+    = image_tag "https://www.empfehlungsbund.de/system/logos/1/medium/itsax.png"
+    = image_tag "https://www.empfehlungsbund.de/system/logos/2/medium/itmitte.png"
+    = image_tag "https://www.empfehlungsbund.de/system/logos/3/medium/mintsax.png"
+    = image_tag "https://www.empfehlungsbund.de/system/logos/4/medium/officemitte.png"
+    = image_tag "https://www.empfehlungsbund.de/system/logos/5/medium/officesax.png"
+    %br
+    = image_tag "https://www.empfehlungsbund.de/system/logos/6/medium/itbbb.png"
+  :css
+    .reveal .plain img { border: 0; box-shadow: none; }

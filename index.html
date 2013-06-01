@@ -15,9 +15,9 @@
   <img src="images/logo.png" />
   <h3>Javascript "Transpiler"</h3>
   <p>
-    <img src="http://wdcmdresden.com/wp-content/themes/twentytwelve-child/img/wdcm.png" />
+    <img src="http://dresden.onruby.de/assets/labels/dresden-349714ad491282910d375650db6d018f.png" />
     <br />
-    09.11.2012
+    01.06.2013
   </p>
 </section>
 <section>
@@ -45,8 +45,8 @@
   </section>
   <section>
     <ul>
-      <li>keine ;</li>
-      <li>keine {...}</li>
+      <li>keine <code>;</code></li>
+      <li>keine <code>{...}</code></li>
       <li>wenig Klammern</li>
       <li>Whitespace signifikant</li>
     </ul>
@@ -69,25 +69,31 @@
   <section>
     <h2>Objekte / Funktionen</h2>
     <div class='editor-content'>
-      math = &#x000A;  PI: 3.1415926&#x000A;  #square: (x) ->&#x000A;  #  return x * x&#x000A;  #circleUmfang: (radius) ->&#x000A;  #  return this.PI * this.square(radius)&#x000A;&#x000A;#math.square 4&#x000A;#math.circleUmfang(2)&#x000A;
+      math =&#x000A;  PI: 3.1415926&#x000A;  #square: (x) ->&#x000A;  #  return x * x&#x000A;  #circleUmfang: (radius) ->&#x000A;  #  return this.PI * this.square(radius)&#x000A;&#x000A;#math.square 4&#x000A;#math.circleUmfang(2)&#x000A;
     </div>
   </section>
   <section>
     <h2>Klassen</h2>
     <div class='editor-content'>
-      class User&#x000A;  constructor: (name) ->&#x000A;    this.name = name&#x000A;    &#x000A;  #greet: -> &#x000A;  #  return "Hello " + this.name&#x000A;    &#x000A;#user = new User("stefan")&#x000A;#user.greet()&#x000A;&#x000A;#class Admin extends User&#x000A;#  greet: ->&#x000A;#    super + " and you are Admin!"&#x000A;#admin = new Admin("stefan")&#x000A;#admin.greet()&#x000A;&#x000A;&#x000A;
+      class User&#x000A;  constructor: (name) ->&#x000A;    this.name = name&#x000A;&#x000A;  #greet: ->&#x000A;  #  return "Hello " + this.name&#x000A;&#x000A;#user = new User("stefan")&#x000A;#user.greet()&#x000A;&#x000A;#class Admin extends User&#x000A;#  greet: ->&#x000A;#    super + " and you are Admin!"&#x000A;#admin = new Admin("stefan")&#x000A;#admin.greet()&#x000A;&#x000A;&#x000A;
     </div>
   </section>
   <section>
     <h2>jQuery &amp; co</h2>
     <div class='editor-content'>
-      #links = []&#x000A;jQuery -> &#x000A;#  $('a').each ->&#x000A;#    if a = $(@).attr("href")&#x000A;#      links.push a&#x000A;#  links&#x000A;#links  &#x000A;&#x000A;#$.ajax&#x000A;#   url: 'http://api.twitter.com/1/statuses/user_timeline.json'&#x000A;#   type: 'GET'&#x000A;#   dataType: 'jsonp'&#x000A;#   data:&#x000A;#     screen_name: "wdcmdresden"&#x000A;#     count: 2&#x000A;#   success: (data, textStatus, xhr)->&#x000A;#     for tweet in data&#x000A;#       alert(tweet.text)&#x000A;
+      #links = []&#x000A;jQuery ->&#x000A;#  $('a').each ->&#x000A;#    if a = $(@).attr("href")&#x000A;#      links.push a&#x000A;#  links&#x000A;#links&#x000A;&#x000A;#$.ajax&#x000A;#   url: 'http://api.twitter.com/1/statuses/user_timeline.json'&#x000A;#   type: 'GET'&#x000A;#   dataType: 'jsonp'&#x000A;#   data:&#x000A;#     screen_name: "ruby_dresden",&#x000A;#     count: 2&#x000A;#   success: (data, textStatus, xhr)->&#x000A;#     alert(tweet.text) for tweet in data&#x000A;
     </div>
   </section>
   <section>
     <h2>More...</h2>
     <div class='editor-content'>
       if a?.has(":something")?&#x000A;  console.log "..."
+    </div>
+  </section>
+  <section>
+    <h2>Rückgabewerte</h2>
+    <div class='editor-content'>
+      calculate = ->&#x000A;  # do something&#x000A;  12 + 14&#x000A;&#x000A;calculate()
     </div>
   </section>
   <section>
@@ -99,7 +105,7 @@
   <section>
     <h3>Expressions everywhere</h3>
     <div class='editor-content'>
-      value = if a?&#x000A;  42&#x000A;else&#x000A;  23&#x000A;&#x000A;# sum=0&#x000A;# result = sum+=x for x in [0..100]&#x000A;&#x000A;# arr = for x in [1..25]&#x000A;#   x * x&#x000A;&#x000A;  &#x000A;
+      value = if a?&#x000A;  42&#x000A;else&#x000A;  23&#x000A;&#x000A;# sum=0&#x000A;# result = sum+=x for x in [0..100]&#x000A;&#x000A;# arr = for x in [1..25]&#x000A;#   x * x&#x000A;&#x000A;&#x000A;
     </div>
   </section>
 </section>
@@ -135,6 +141,42 @@
     </ul>
   </section>
   <section>
+    <h3>Rails</h3>
+    <p>Braucht JavaScript-Engine:</p>
+    <ul>
+      <li>
+        <pre class='code'>apt-get install nodejs</pre>
+      </li>
+      <li>
+        <pre class='code'>gem "therubyracer"</pre>
+      </li>
+    </ul>
+  </section>
+  <section>
+    <h3>Rails - Als js.erb Ersatz</h3>
+    <ul>
+      <li>
+        <a href="https://github.com/markbates/coffeebeans">markbates/coffeebeans</a>
+        &rarr;
+        <pre class='code'>gem "coffeebeans"&#x000A;...&#x000A;app/views/users/index.js.coffee</pre>
+      </li>
+      <li class='fragment'>
+        HAML <code>coffee-filter</code>
+        <pre class='code'>:coffeescript&#x000A;  $ ->&#x000A;    console.log "Hello"&#x000A;&#x000A;</pre>
+      </li>
+    </ul>
+  </section>
+  <section>
+    <h3>Iced Coffeescript</h3>
+    <blockquote>
+      [...] is a superset of CoffeeScript. [...]
+      <br />
+      <a href="http://maxtaco.github.io/coffee-script/">IcedCoffeeScript (ICS)</a>
+      adds two new keywords: <strong>await</strong> and <strong>defer</strong>
+    </blockquote>
+    Asynchrone Callbacks &rarr; (scheinbar) synchroner prozeduraler Code
+  </section>
+  <section>
     <h3>Editor</h3>
     <ul>
       <li>vim, eclipse, sublime, netbeans,...</li>
@@ -163,6 +205,32 @@
       In the process of converting, we shaved off more than 5000 lines of code, a 21% reduction.
     </blockquote>
     https://tech.dropbox.com/?p=361
+  </section>
+  <section>
+    <h3>
+      <a href="https://github.com/jashkenas/coffee-script/wiki/In-The-Wild">Wer nutzt es sonst noch?</a>
+    </h3>
+    <ul>
+      <li>Hubot</li>
+      <li>Posterous</li>
+      <li>Trello</li>
+      <li>Airbnb Mobile</li>
+      <li>Basecamp</li>
+      <li>Various Node.js libs/frameworks</li>
+      <li>m.nytimes, The Economist</li>
+    </ul>
+  </section>
+  <section>
+    <blockquote>
+      As a result he was very happy with the quality of the JavaScript codebase.
+      <br />
+      However he still concluded that they would have been better off working in CoffeeScript, because it's easier to understand what is going [...]
+      <br />
+      <strong>
+        but I agree with him and will continue to use coffeescript for any non-trivial amounts of javascript.
+      </strong>
+    </blockquote>
+    <a href="http://martinfowler.com/bliki/TransparentCompilation.html">Martin Fowler</a>
   </section>
   <section>
     <ul>
@@ -210,7 +278,7 @@
   </section>
   <section>
     <h4>LispyScript</h4>
-    <pre class='code'>(var square (function (x) (* x x))) &#x000A;(console.log (square 10))&#x000A;</pre>
+    <pre class='code'>(var square (function (x) (* x x)))&#x000A;(console.log (square 10))&#x000A;</pre>
   </section>
 </section>
 <section>
@@ -221,30 +289,38 @@
     <ul>
       <li><a href="http://coffeescript.org/">CoffeeScript Doku</a></li>
       <li><a href="http://coffeescriptcookbook.com">CoffeeScript Cookbook</a></li>
+      <li><a href="http://js2coffee.org">JS2Coffee</a></li>
       <li><a href="http://www.youtube.com/watch?v=aER4_AP3S4E">[Youtube] CoffeeScript for the Rubyist by Mark Bates</a></li>
     </ul>
   </section>
 </section>
 <section>
-  <h2>me</h2>
+  <img style="float: left; margin-right: 10px" src="http://www.gravatar.com/avatar/6edcb304a03a87ddf5c68239f7d001e4?s=200&d=identicon&r=PG" />
   <p>
     Stefan Wienert
     <br />
     <a href="https://twitter.com/stefanwienert">@stefanwienert</a>
     <br />
     <a href="http://www.stefanwienert.net">stefanwienert.net</a>
+    <br />
+    <small>Webentwickler bei pludoni GmbH</small>
   </p>
-  <h2>Credits</h2>
-  <ul>
-    <li>
-      <a href="http://lab.hakim.se/reveal-js">reveal.js</a>
-      Presi-Framework
-    </li>
-    <li>
-      <a href="http://bodil.org/coffeescript">Bodil.org - Coffeescript</a>
-      Inspiration des Live-Editor
-    </li>
-  </ul>
+  <p class='plain' style='clear: both'>
+    <img src="https://www.empfehlungsbund.de/empfehlungsbund-logo.png" />
+    <br />
+    <img src="https://www.empfehlungsbund.de/system/logos/1/medium/itsax.png" />
+    <img src="https://www.empfehlungsbund.de/system/logos/2/medium/itmitte.png" />
+    <img src="https://www.empfehlungsbund.de/system/logos/3/medium/mintsax.png" />
+    <img src="https://www.empfehlungsbund.de/system/logos/4/medium/officemitte.png" />
+    <img src="https://www.empfehlungsbund.de/system/logos/5/medium/officesax.png" />
+    <br />
+    <img src="https://www.empfehlungsbund.de/system/logos/6/medium/itbbb.png" />
+  </p>
+  <style type='text/css'>
+    /*<![CDATA[*/
+      .reveal .plain img { border: 0; box-shadow: none; }
+    /*]]>*/
+  </style>
 </section>
         </div>
         <aside class='controls'>

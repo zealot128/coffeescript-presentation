@@ -1,12 +1,12 @@
 %section#intro
   = image_tag "logo.png"
-  
+
   %h3 Javascript "Transpiler"
 
-  %p 
-    = image_tag "http://wdcmdresden.com/wp-content/themes/twentytwelve-child/img/wdcm.png"
+  %p
+    = image_tag "http://dresden.onruby.de/assets/labels/dresden-349714ad491282910d375650db6d018f.png"
     %br
-    09.11.2012
+    = Date.today.strftime "%d.%m.%Y"
 %section
   %section
     %blockquote
@@ -30,8 +30,8 @@
     Hybrid aus Ruby und Python
   %section
     %ul
-      %li keine ;
-      %li keine {...}
+      %li keine <code>;</code>
+      %li keine <code>{...}</code>
       %li wenig Klammern
       %li Whitespace signifikant
   %section
@@ -50,7 +50,7 @@
     %h2 Objekte / Funktionen
     .editor-content
       :preserve
-        math = 
+        math =
           PI: 3.1415926
           #square: (x) ->
           #  return x * x
@@ -59,7 +59,7 @@
 
         #math.square 4
         #math.circleUmfang(2)
-          
+
   %section
     %h2 Klassen
     .editor-content
@@ -67,10 +67,10 @@
         class User
           constructor: (name) ->
             this.name = name
-            
-          #greet: -> 
+
+          #greet: ->
           #  return "Hello " + this.name
-            
+
         #user = new User("stefan")
         #user.greet()
 
@@ -80,38 +80,38 @@
         #admin = new Admin("stefan")
         #admin.greet()
 
-        
+
 
   %section
     %h2 jQuery &amp; co
     .editor-content
       :preserve
         #links = []
-        jQuery -> 
+        jQuery ->
         #  $('a').each ->
         #    if a = $(@).attr("href")
         #      links.push a
         #  links
-        #links  
+        #links
 
         #$.ajax
         #   url: 'http://api.twitter.com/1/statuses/user_timeline.json',
         #   type: 'GET',
         #   dataType: 'jsonp',
         #   data:
-        #     screen_name: "wdcmdresden",
+        #     screen_name: "ruby_dresden",
         #     count: 2
         #   success: (data, textStatus, xhr)->
         #     alert(tweet.text) for tweet in data
-                
-  %section 
+
+  %section
 
     %h2 More...
     .editor-content
       :preserve
         if a?.has(":something")?
           console.log "..."
-  %section 
+  %section
 
     %h2 Rückgabewerte
     .editor-content
@@ -142,8 +142,8 @@
 
         # sum=0; result = sum+=x for x in [0..5]
 
-          
-          
+
+
 %section
   %section
     %h2 Tool-Support
@@ -182,6 +182,46 @@
     %ul
       %li Rails 3.1+ Asset pipeline
       %li Sinatra, Django, Drupal, Symfony2,...
+  %section
+    %h3 Rails
+    %p Braucht JavaScript-Engine:
+    %ul
+      %li
+        %pre.code
+          apt-get install nodejs
+      %li
+        %pre.code
+          :preserve
+            gem "therubyracer"
+  %section
+    %h3 Rails - Als js.erb Ersatz
+
+    %ul
+      %li
+        = link_to "markbates/coffeebeans", "https://github.com/markbates/coffeebeans"
+        &rarr;
+        %pre.code
+          :preserve
+            gem "coffeebeans"
+            ...
+            app/views/users/index.js.coffee
+      %li.fragment
+        HAML <code>coffee-filter</code>
+        %pre.code
+          :preserve
+            :coffeescript
+              $ ->
+                console.log "Hello"
+
+
+  %section
+    %h3 Iced Coffeescript
+    %blockquote
+      [...] is a superset of CoffeeScript. [...]
+      %br
+      = link_to "IcedCoffeeScript (ICS)", "http://maxtaco.github.io/coffee-script/"
+      adds two new keywords: <strong>await</strong> and <strong>defer</strong>
+    Asynchrone Callbacks &rarr; (scheinbar) synchroner prozeduraler Code
 
   %section
     %h3 Editor
@@ -195,8 +235,8 @@
   %section
     %h2 Warum?
 
-    %blockquote 
-      The compiled output is <strong>readable</strong> and pretty-printed, passes through <strong>JavaScript Lint without warnings</strong>, will work in every JavaScript runtime, and tends to <strong>run as fast or faster</strong> than the equivalent handwritten JavaScript. 
+    %blockquote
+      The compiled output is <strong>readable</strong> and pretty-printed, passes through <strong>JavaScript Lint without warnings</strong>, will work in every JavaScript runtime, and tends to <strong>run as fast or faster</strong> than the equivalent handwritten JavaScript.
     Coffeescript-Dokumentation
   %section
     %blockquote
@@ -207,7 +247,7 @@
     %blockquote
       Dropbox now writes all new browser-side code in CoffeeScript, and we’ve been loving it. [...]
       %br
-      In the process of converting, we shaved off more than 5000 lines of code, a 21% reduction. 
+      In the process of converting, we shaved off more than 5000 lines of code, a 21% reduction.
 
 
     https://tech.dropbox.com/?p=361
@@ -223,25 +263,25 @@
     %h3 Geschmackssache: Einrückung als Syntax
   %section
     %h3 Komplexerer Build-Prozess
-    .fragment 
-      Abhilfe schafft 
+    .fragment
+      Abhilfe schafft
       %pre.code coffee watch
       oder guard-coffeescript
   %section
     %h3 Debugging: Zeilennummern matchen nicht mit Fehlermeldung
-    .fragment 
+    .fragment
       &rarr; Source Maps in Chrome
       %br
       %small Auch zum Debugging von minified JS
   %section
     %h3 Alternativen
 
-    %h4 
-      Typescript 
+    %h4
+      Typescript
       %i Microsoft
     %pre.code
 
-      :preserve 
+      :preserve
         class Admin {
          ...
         }
@@ -251,7 +291,7 @@
         }
         function greet(variable: Person) {...}
   %section
-    %h4 
+    %h4
       Dart2Js
       %i Google
     %pre.code
@@ -268,7 +308,7 @@
     %h4 LispyScript
     %pre.code
       :preserve
-        (var square (function (x) (* x x))) 
+        (var square (function (x) (* x x)))
         (console.log (square 10))
 
 %section
@@ -280,7 +320,7 @@
     = link_to "[Youtube] CoffeeScript for the Rubyist by Mark Bates", "http://www.youtube.com/watch?v=aER4_AP3S4E"
 %section
   %h2 me
-  %p 
+  %p
     Stefan Wienert
     %br
     = link_to "@stefanwienert", "https://twitter.com/stefanwienert"

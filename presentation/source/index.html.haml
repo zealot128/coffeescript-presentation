@@ -252,6 +252,27 @@
 
     https://tech.dropbox.com/?p=361
   %section
+    %h3
+      = link_to "Wer nutzt es sonst noch?", "https://github.com/jashkenas/coffee-script/wiki/In-The-Wild"
+    %ul
+      %li Hubot
+      %li Posterous
+      %li Trello
+      %li Airbnb Mobile
+      %li Basecamp
+      %li Various Node.js libs/frameworks
+      %li m.nytimes, The Economist
+  %section
+    %blockquote
+      As a result he was very happy with the quality of the JavaScript codebase.
+      %br
+      However he still concluded that they would have been better off working in CoffeeScript, because it's easier to understand what is going [...]
+
+      %br
+      %strong
+        but I agree with him and will continue to use coffeescript for any non-trivial amounts of javascript.
+    = link_to "Martin Fowler", "http://martinfowler.com/bliki/TransparentCompilation.html"
+  %section
     %ul
       %li Lesbarer
       %li spaßiger
@@ -315,22 +336,32 @@
   %section
     %h2 Ressourcen
   %section
-    = link_to "CoffeeScript Doku", "http://coffeescript.org/"
-    = link_to "CoffeeScript Cookbook", "http://coffeescriptcookbook.com"
-    = link_to "[Youtube] CoffeeScript for the Rubyist by Mark Bates", "http://www.youtube.com/watch?v=aER4_AP3S4E"
+    %ul
+      %li= link_to "CoffeeScript Doku", "http://coffeescript.org/"
+      %li= link_to "CoffeeScript Cookbook", "http://coffeescriptcookbook.com"
+      %li= link_to "JS2Coffee", "http://js2coffee.org"
+      %li= link_to "[Youtube] CoffeeScript for the Rubyist by Mark Bates", "http://www.youtube.com/watch?v=aER4_AP3S4E"
 %section
-  %h2 me
+
+  = image_tag "http://www.gravatar.com/avatar/6edcb304a03a87ddf5c68239f7d001e4?s=200&d=identicon&r=PG", style: "float: left; margin-right: 10px"
   %p
     Stefan Wienert
     %br
     = link_to "@stefanwienert", "https://twitter.com/stefanwienert"
     %br
     = link_to "stefanwienert.net", "http://www.stefanwienert.net"
-  %h2 Credits
-  %ul
-    %li
-      = link_to "reveal.js", "http://lab.hakim.se/reveal-js"
-      Presi-Framework
-    %li
-      = link_to "Bodil.org - Coffeescript", "http://bodil.org/coffeescript"
-      Inspiration des Live-Editor
+    %br
+    %small Webentwickler bei pludoni GmbH
+
+  %p.plain(style="clear: both")
+    = image_tag "https://www.empfehlungsbund.de/empfehlungsbund-logo.png"
+    %br
+    = image_tag "https://www.empfehlungsbund.de/system/logos/1/medium/itsax.png"
+    = image_tag "https://www.empfehlungsbund.de/system/logos/2/medium/itmitte.png"
+    = image_tag "https://www.empfehlungsbund.de/system/logos/3/medium/mintsax.png"
+    = image_tag "https://www.empfehlungsbund.de/system/logos/4/medium/officemitte.png"
+    = image_tag "https://www.empfehlungsbund.de/system/logos/5/medium/officesax.png"
+    %br
+    = image_tag "https://www.empfehlungsbund.de/system/logos/6/medium/itbbb.png"
+  :css
+    .reveal .plain img { border: 0; box-shadow: none; }

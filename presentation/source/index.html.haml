@@ -15,12 +15,16 @@
     Jeremy Ashkenas (CoffeeScript + Backbone.js)
 
   %section
-    -# <iframe width="800" height="600" src="http://www.youtube.com/embed/_yZHbh396rc?feature=player_detailpage#t=82s" frameborder="0" allowfullscreen></iframe></iframe>
-    %video(controls="controls")
-      %source(src="https://s3.amazonaws.com/destroyallsoftware-talks/wat.mov?AWSAccessKeyId=AKIAIKRVCECXBC4ZGHIQ&Expires=1372943597&Signature=EBu%2FwrtRoIcvs%2Bun2I%2B9eZ%2F9xBo%3D")
+    <iframe width="640" height="360" src="https://www.youtube.com/embed/lrBhwGUF6yU?feature=player_detailpage" frameborder="0" allowfullscreen></iframe>
+    = link_to "https://www.destroyallsoftware.com/talks/wat", "https://www.destroyallsoftware.com/talks/wat"
 
   %section
     = image_tag "javascript_good_and_bad_parts.jpg"
+
+    %blockquote
+      JS had to “look like Java” only less so, be Java’s dumb kid brother or boy-hostage sidekick. Plus, I had to be done in ten days or something worse than JS would have happened.
+    Brendan Eich, creator of JS
+
 
   %section
     .fragment= image_tag "to2.png"
@@ -31,8 +35,8 @@
 %section
   %section
     %h1.title Syntax
-    Hybrid aus Ruby und Python
   %section
+    %h2 Hybrid aus Ruby und Python
     %ul
       %li keine <code>;</code>
       %li keine <code>{...}</code>
@@ -51,11 +55,22 @@
     %aside.notes
       einfuehrung in Editor. Literale, Rueckgabewerte, Scoping
   %section
+
+    %h2 Rückgabewerte
+    .editor-content
+      :preserve
+        calculate = ->
+          # do something
+          12 + 14
+
+        calculate()
+  %section
     %h2 Objekte / Funktionen
     .editor-content
       :preserve
-        math =
+        math = {
           PI: 3.1415926
+        }
           #square: (x) ->
           #  return x * x
           #circleUmfang: (radius) ->
@@ -63,6 +78,8 @@
 
         #math.square 4
         #math.circleUmfang(2)
+        http://query.yahooapis.com/v1/public/yql?q=%22USE+%22http%3A%2F%2Fyqlblog.net%2Fsamples%2Fdata.html.cssselect.xml%22+AS+data.html.cssselect%3B+SELECT+*+FROM+data.html.cssselect+WHERE+url+%3D+%22https%3A%2F%2Ftwitter.com%2Fruby_dresden%22+AND+css+%3D+%22.js-stream-tweet%22
+        http://query.yahooapis.com/v1/public/yql?q=USE%20%22http%3A%2F%2Fyqlblog.net%2Fsamples%2Fdata.html.cssselect.xml%22%20AS%20data.html.cssselect%3B%20SELECT%20*%20FROM%20data.html.cssselect%20WHERE%20url%20%3D%20%22https%3A%2F%2Ftwitter.com%2Fruby_dresden%22%20AND%20css%20%3D%20%22.js-stream-tweet%22
 
   %section
     %h2 Klassen
@@ -107,6 +124,18 @@
         #     count: 2
         #   success: (data, textStatus, xhr)->
         #     alert(tweet.text) for tweet in data
+        # :( doesn't work, Twitter discontinued public REST API 1.0
+
+        #$.ajax
+        #  url: 'http://query.yahooapis.com/v1/public/yql',
+        #  type: 'GET',
+        #  dataType: 'jsonp',
+        #  data:
+        #    q: 'USE "http://yqlblog.net/samples/data.html.cssselect.xml" AS data.html.cssselect; SELECT * FROM data.html.cssselect WHERE url = "https://twitter.com/ruby_dresden" AND css = ".js-tweet-text"'
+        #  success: (data, textStatus, xhr)->
+        #    xml = $($.parseXML(data.results[0]))
+        #    tweets = xml.find("results > p").slice(0,2)
+        #    alert($(tweet).text()) for tweet in tweets
 
   %section
 
@@ -115,16 +144,6 @@
       :preserve
         if a?.has(":something")?
           console.log "..."
-  %section
-
-    %h2 Rückgabewerte
-    .editor-content
-      :preserve
-        calculate = ->
-          # do something
-          12 + 14
-
-        calculate()
   %section
     .fragment
       %h3 Chainable Comparison
@@ -144,7 +163,8 @@
         else
           23
 
-        # sum=0; result = sum+=x for x in [0..5]
+        # sum=0
+        # sum+=x for x in [0..5]
 
 
 
@@ -268,14 +288,23 @@
       %li m.nytimes, The Economist
   %section
     %blockquote
-      As a result he was very happy with the quality of the JavaScript codebase.
-      %br
       However he still concluded that they would have been better off working in CoffeeScript, because it's easier to understand what is going [...]
-
       %br
       %strong
-        but I agree with him and will continue to use coffeescript for any non-trivial amounts of javascript.
+        I agree with him and will continue to use coffeescript for any non-trivial amounts of javascript.
     = link_to "Martin Fowler", "http://martinfowler.com/bliki/TransparentCompilation.html"
+
+  %section
+    %blockquote
+      CoffeeScript is the closest I've felt to the power I had twenty years ago in Smalltalk.
+    = link_to "Ward Cunningham","http://www.infoq.com/interviews/ward-cunningham-agile-10"
+
+  %section
+    %blockquote
+      CoffeeScript is well done and more convenient to use than JS,
+      %small provided you buy into the Python-esque significant space and the costs of generating JS from another source language.
+      %strong But semantically it’s still JS.
+    = link_to "Brendan Eich", "https://brendaneich.com/2011/01/harmony-of-my-dreams/"
   %section
     %ul
       %li Lesbarer
@@ -285,15 +314,19 @@
   %section
     %h2 Warum nicht?
 
-    %h3 Geschmackssache: Einrückung als Syntax
   %section
-    %h3 Komplexerer Build-Prozess
+    %h3 #1: Geschmackssache: Einrückung als Syntax
+  %section
+    %h3 #2: Komplexerer Build-Prozess
     .fragment
       Abhilfe schafft
       %pre.code coffee watch
       oder guard-coffeescript
+
+    .fragment
+      Non-issue mit Rails
   %section
-    %h3 Debugging: Zeilennummern matchen nicht mit Fehlermeldung
+    %h3 #3 Debugging: Zeilennummern matchen nicht mit Fehlermeldung
     .fragment
       &rarr; Source Maps in Chrome
       %br
